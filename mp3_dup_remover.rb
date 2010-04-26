@@ -31,7 +31,7 @@ class Hasher
         if @file_count%100 == 0
           puts @file_count
         end
-        digest = Digest::MD5.hexdigest(File.open(fullpath, 'rb') {|f| f.sysread(1024)})
+        digest = Digest::MD5.hexdigest(File.open(fullpath, 'rb') {|f| f.sysread(4096)})
         if @checksums[digest]
           @checksums[digest] = false
         else
